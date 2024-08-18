@@ -62,9 +62,9 @@ if(XTENSOR_USE_XSIMD)
     set(xsimd_REQUIRED_VERSION 11.0.0)
     if(TARGET xsimd)
         set(xsimd_VERSION ${XSIMD_VERSION_MAJOR}.${XSIMD_VERSION_MINOR}.${XSIMD_VERSION_PATCH})
-        # Note: This is not SEMVER compatible comparison
+        # Allow any version higher than or equal to the required version
         if(${xsimd_VERSION} VERSION_LESS ${xsimd_REQUIRED_VERSION})
-            message(ERROR "Mismatch xsimd versions. Found '${xsimd_VERSION}' but requires: '${xsimd_REQUIRED_VERSION}'")
+            message(ERROR "Mismatch xsimd versions. Found '${xsimd_VERSION}' but requires: '${xsimd_REQUIRED_VERSION}' or higher")
         else()
             message(STATUS "Found xsimd v${xsimd_VERSION}")
         endif()
